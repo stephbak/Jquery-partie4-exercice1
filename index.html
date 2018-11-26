@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <script src="jquery-3.2.1.js"></script>
+  <title>Jquery partie 4</title>
+</head>
+<body>
+  <li><input type="radio" name="list" value="Pierre" id="choice" />Pierre</li>
+  <li><input type="radio" name="list" value="Feuille" id="choice" />Feuille</li>
+  <li><input type="radio" name="list" value="Ciseaux" id="choice" />Ciseaux</li>
+  <input type="text" name="" value="" id="percent" /><p>% de victoires</p>
+  <button id="play" type="button" name="button">Shifumi!</button>
+  <script>
+  $(function(){
+    var counter = 0;
+    $('#play').click(function(){
+      var list = ["Pierre", "Feuille", "Ciseaux"];
+      var player = $('#choice[name=list]:checked').val();
+      var result = (Math.floor(Math.random()*3));
+      var ordi = '';
+      counter++;
+      var percent = Math.round((100/counter)*100)/100;
+      if(result == 0){
+        ordi = 'Pierre';
+      }else if(result == 1){
+        ordi = 'Feuille';
+      }else if(result == 2){
+        ordi = 'Ciseaux';
+      }if((ordi == 'Pierre') && (player == 'Feuille') || (ordi == 'Feuille') && (player == 'Ciseaux') || (ordi == 'Ciseaux') && (player == 'Pierre')){
+        alert('Vous: '+ player + '\nordi: ' + ordi + '\ngagné en ' + counter + ' coups');
+        $('#percent').val(percent);
+      }else if(ordi == player){
+        alert('Vous: ' + player +'\nordi: ' + ordi + '\négalité');
+      }else{
+        alert('Vous: ' + player +'\nordi: ' + ordi + '\nperdu');
+      }
+    });
+  });
+</script>
+</body>
+</html>

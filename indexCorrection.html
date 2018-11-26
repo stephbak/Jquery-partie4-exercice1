@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <script src="jquery-3.2.1.js"></script>
+  <title>Jquery correction exercice1</title>
+</head>
+<body>
+  <select id="select">
+    <option disabled selected>Choisir</option>
+    <option value="1">Pierre</option>
+    <option value="2">Feuille</option>
+    <option value="3">Ciseaux</option>
+  </select>
+  <button id="play" type="button" name="button">Shifumi</button>
+  <script>
+  $(function(){
+    var win = 0;
+    var lose = 0;
+    var percent = 0;
+    var counter = 0;
+    //les variables de compteur se placent avant la fonction clique : au chargement de la page les compteurs sont initialisés à 0
+    $('#play').click(function(){
+      counter ++;
+      var player = $('#select').val();
+      var result = Math.floor(Math.random()*3)+1;
+      console.log(result);
+      if(player == result){
+        alert('Egalité!');
+      }else if((result == 3 && player == 2) || (result == 2 && player == 1) || (result == 1 && player == 3)){
+        lose ++;
+        alert(lose + ' défaites');
+      }else{
+        win ++;
+        alert(win + ' victoires!');
+      }
+      percent = (win*100)/counter;
+      alert(percent + '%');
+    });
+  });
+  </script>
+</body>
+</html>
